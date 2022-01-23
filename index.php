@@ -1,11 +1,40 @@
 <?php get_header(); ?>
 
+<?php 
+    $factos_sidebar_check = 'col-md-8';
+    if(!is_active_sidebar('sidebar-1')){
+        $factos_sidebar_check = 'col-md-10 offset-md-1';
+    }
+?>
 
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-5 mt-5 w-100">
+                <div class="search-form">
+                    <?php 
+                        if(is_search()):
+                    ?>
+                    <h4>You searched for: <?php echo the_search_query(); ?></h4>
+
+
+                    <?php
+                        endif;
+                    ?>
+                    <?php 
+                        echo get_search_form();
+                    ?>
+                    <h3>
+                        your search result is: <?php  echo the_search_query(); ?>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Main container -->
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="<?php echo esc_html($factos_sidebar_check); ?>">
                 <div class="post-area">
                     <!-- Post loop -->
                     <?php
@@ -67,6 +96,24 @@
                     </div>
                 </div>
             </div>
+            
+            <?php 
+                if(is_active_sidebar('sidebar-1')):
+            ?>
+            <div class="col-md-4">
+                <div class="sidebar-area">
+                    <?php 
+                        if(is_active_sidebar('sidebar-1')){
+                            dynamic_sidebar('sidebar-1');
+                        }
+                    ?>
+                </div>
+            </div>
+
+            <?php
+                endif;
+            ?>
+
         </div>
 
 

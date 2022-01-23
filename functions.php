@@ -134,4 +134,9 @@ function factos_header_img(){
 
 add_action('wp_head' , 'factos_header_img');
 
-?>
+// remove a class from body_class
+// function factos_body_class($classes){
+//     unset($classes[array_search('wp-custom-logo' , $classes)]);
+//     return $classes;
+// }
+// add_filter('body_class', 'factos_body_class');
